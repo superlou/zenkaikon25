@@ -52,13 +52,13 @@ function node.render()
 
     gl.clear(1, 1, 1, 1)
 
-    offset(1280, 0, function()
+    offset(0, 0, function()
         topic_sidebar:draw()
     end)
 
-    main_bg:draw(0, 0, 1280, 964)
+    main_bg:draw(640, 0, 1920, 964)
 
-    offset(0, 0, function()
+    offset(640, 0, function()
         topic_main:draw()
     end)
 
