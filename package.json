@@ -1,7 +1,7 @@
 {
-    "name": "otakon24",
+    "name": "zenkaikon25",
     "author": "superlou <lousimons@gmail.com>",
-    "desc": "Digital signage for Otakon 2024",
+    "desc": "Digital signage for Zenkiakon 2025",
     "platforms": [
         "pi/epoch-1", "pi/epoch-2"
     ]
