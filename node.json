@@ -131,6 +131,40 @@
             }]
         },
         {
+            "title": "Inset Topic Player",
+            "name": "inset_topic_player",
+            "type": "list",
+            "itemname": "Topic",
+            "items": [{
+                "title": "Heading",
+                "name": "heading",
+                "type": "string"
+            }, {
+                "title": "Message",
+                "name": "message",
+                "type": "text"
+            }, {
+                "title": "Media",
+                "name": "media",
+                "type": "resource",
+                "valid": ["image", "video"],
+                "default": "img_no_media.png"
+            }, {
+                "title": "Duration",
+                "name": "duration",
+                "type": "duration"
+            }, {
+                "title": "Device",
+                "name": "device",
+                "type": "device"
+            }, {
+                "title": "Disabled",
+                "name": "disabled",
+                "type": "boolean",
+                "hint": "Hide a topic without deleting it"
+            }]
+        },
+        {
             "title": "Guidebook information",
             "intro": "Information to synchronize data from Guidebook.",
             "type": "section"
