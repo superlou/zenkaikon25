@@ -60,7 +60,34 @@ local main_style = {
     }
 }
 
+local inset_style = {
+    heading = {
+        style = "underline",
+        font = font_hdg,
+        font_size = 64,
+        text_color = COLOR_OTAKON_AFFAIR,
+        shadow_color = COLOR_OTAKON_AFFAIR,
+        padding = 50,
+    },
+    text = {
+        font = font_body,
+        font_bold = font_body_bold,
+        color = "ffffff",
+    },
+    margin = {70, 50, 70, 50},
+    heading_y = 80,
+    message_y = 160,
+    session_list = {
+        item_bg_img = resource.create_colored_texture(0, 0, 0, 1.0),
+        compact = true
+    },
+    session_brief = {
+        item_bg_img = resource.create_colored_texture(0, 0, 0, 1.0)
+    }
+}
+
 return {
     sidebar_style = sidebar_style,
     main_style = main_style,
+    inset_style = inset_style,
 }

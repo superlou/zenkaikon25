@@ -34,7 +34,22 @@
     "is_soon_threshold": 1.0,
     "session_rename": "30409665,Street Fighter\n30409525,VIP Meet and Greet with Flow\n",
     "location_rename": "4783251,Club Ota (Marriott M4)",
-    "sidebar_topic_player":[{
+    "inset_topic_player": [{
+        "device":"",
+        "duration": 5,
+        "heading":"",
+        "media": {
+            "asset_id": 1245,
+            "asset_name":"test-asset-230fa9420ff9c02da9320-street.png",
+            "filename":"street.png",
+            "metadata":{"format": "png", "height": 964, "width": 1280},
+            "tags":[],
+            "type":"image"
+        },
+        "message":"!session-brief\ndata:data_sessions_all_day.json\nfilter-location:Club Ota (Marriott M4 Independence)",
+        "disabled": false
+    }],
+    "sidebar_topic_player": [{
         "device": "",
         "duration": 5,
         "heading": "Happening Now",

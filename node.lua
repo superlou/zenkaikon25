@@ -25,6 +25,7 @@ local service_indicator = ServiceIndicator()
 local style = require "style"
 local topic_sidebar = TopicPlayer(640, 964, style["sidebar_style"])
 local topic_main = TopicPlayer(1280, 964, style["main_style"])
+local topic_inset = TopicPlayer(600, 200, style["inset_style"])
 
 util.data_mapper {
     ["clock/update"] = function(data)
@@ -42,6 +43,7 @@ json_watch("config.json", function(config)
     ticker:set_msgs_from_config(config)
     topic_sidebar:set_topics_from_config(config["sidebar_topic_player"])
     topic_main:set_topics_from_config(config["main_topic_player"])
+    topic_inset:set_topics_from_config(config["inset_topic_player"])
 end)
 
 local t = 0
@@ -60,6 +62,10 @@ function node.render()
 
     offset(640, 0, function()
         topic_main:draw()
+    end)
+
+    offset(20, 750, function()
+        topic_inset:draw()
     end)
 
     ticker:draw()
