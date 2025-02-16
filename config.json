@@ -84,7 +84,7 @@
         "media": {
             "asset_id": 1245,
             "asset_name":"test-asset-230fa9420ff9c02da9320-street.png",
-            "filename":"street.png",
+            "filename":"img_no_media.png",
             "metadata":{"format": "png", "height": 964, "width": 1280},
             "tags":[],
             "type":"image"
@@ -123,7 +123,7 @@
         "media": {
             "asset_id": 1245,
             "asset_name":"test-asset-230fa9420ff9c02da9320-street.png",
-            "filename":"street.png",
+            "filename":"img_no_media.png",
             "metadata":{"format": "png", "height": 964, "width": 1280},
             "tags":[],
             "type":"image"

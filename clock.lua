@@ -3,11 +3,11 @@ require "color_util"
 
 local Clock = class("Clock")
 
-local font = resource.load_font "font_Poppins-Bold.ttf"
-local font_bold = resource.load_font "font_Poppins-BlackItalic.ttf"
+local font = resource.load_font "font_Poppins-Regular.ttf"
+local font_bold = resource.load_font "font_Poppins-Regular.ttf"
 local debug_bg = create_color_resource_hex("ffffff", 0.4)
-local date_bg = resource.load_image("img_date_bg2.png")
-local date_color = {hex2rgb("#241f31")}
+local date_bg = resource.load_image("img_date_bg.png")
+local date_color = {hex2rgb("#da6339")}
 
 function Clock:initialize(w, h, show_rect)
     self.w, self.h = w, h

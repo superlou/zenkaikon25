@@ -5,7 +5,7 @@ local Ticker = class("Ticker")
 local TickerMsg = class("TickerMsg")
 
 local font = resource.load_font "font_Poppins-Regular.ttf"
-local separator = resource.load_image("img_separator3.png")
+local separator = resource.load_image("img_separator.png")
 local msg_y_offset = 28
 
 function Ticker:initialize()

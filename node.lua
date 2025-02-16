@@ -2,6 +2,7 @@ gl.setup(1920, 1080)
 -- require("test_runner")()
 local Heading = require "heading"
 require "color_util"
+require "draw_util"
 require "json_util"
 require "glass"
 local Ticker = require "ticker"
@@ -12,13 +13,14 @@ local TopicPlayer = require "topic_player"
 local tw = require "tween"
 local ServiceIndicator = require "service_indicator"
 
-local main_bg = resource.load_image "img_right_bg_wide6.png"
--- local ticker_left_crop = resource.load_image "img_ticker_left_crop2.png"
+local sidebar_bg = resource.load_image "img_sidebar_bg.png"
+local main_bg = resource.load_image "img_main_bg.png"
 local ticker_left_crop = resource.load_image "img_ticker_left_crop_qr.png"
-local ticker_right_crop = resource.load_image "img_ticker_right_crop2.png"
+local ticker_right_crop = resource.load_image "img_ticker_right_crop.png"
 local ticker_right_triangle = resource.load_image "img_ticker_right_triangle.png"
 
-local ticker = Ticker:new(0, HEIGHT - 116, WIDTH, 116)
+local ticker_height = 116
+local ticker = Ticker:new(0, HEIGHT - ticker_height, WIDTH, ticker_height)
 local clock = Clock:new(200, 96)
 local service_indicator = ServiceIndicator()
 
@@ -54,6 +56,8 @@ function node.render()
 
     gl.clear(1, 1, 1, 1)
 
+    sidebar_bg:draw(0, 0, 640, 946)
+
     offset(0, 0, function()
         topic_sidebar:draw()
     end)
@@ -70,15 +74,15 @@ function node.render()
 
     ticker:draw()
 
-    -- ticker_left_crop:draw(0, 964, 122, 964 + 116)
     ticker_left_crop:draw(-12, 932, -12 + 235, 932 + 160)
-    ticker_right_crop:draw(1644, 964, 1644 + 276, 964 + 116)
+    -- ticker_right_crop:draw(1644, 964, 1644 + 276, 964 + 116)
+    draw_image_xywh(ticker_right_crop, 1692, 964, 228, 116)
 
-    gl.pushMatrix()
-    gl.translate(1723 + 89/2, 970 + 87/2)
-    gl.rotate(18 * math.sin(2 * 3.141 * 0.1 * t), 0, 0, 1)
-    ticker_right_triangle:draw(-89/2, -89/2, 89/2, 87/2)
-    gl.popMatrix()
+    -- gl.pushMatrix()
+    -- gl.translate(1723 + 89/2, 970 + 87/2)
+    -- gl.rotate(18 * math.sin(2 * 3.141 * 0.1 * t), 0, 0, 1)
+    -- ticker_right_triangle:draw(-89/2, -89/2, 89/2, 87/2)
+    -- gl.popMatrix()
 
     offset(1710, 972, function()
         clock:draw()

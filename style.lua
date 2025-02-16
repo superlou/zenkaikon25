@@ -11,8 +11,8 @@ local sidebar_style = {
         style = "underline",
         font = font_hdg,
         font_size = 64,
-        text_color = COLOR_OTAKON_AFFAIR,
-        shadow_color = COLOR_OTAKON_AFFAIR,
+        text_color = "da6339",
+        shadow_color = "da6339",
         padding = 50,
     },
     text = {
@@ -22,13 +22,13 @@ local sidebar_style = {
     },
     margin = {70, 50, 70, 50},
     heading_y = 80,
-    message_y = 160,
+    message_y = 155,
     session_list = {
-        item_bg_img = resource.create_colored_texture(0, 0, 0, 1.0),
+        item_bg_img = create_color_resource_hex("2b364c", 1.0),
         compact = true
     },
     session_brief = {
-        item_bg_img = resource.create_colored_texture(0, 0, 0, 1.0)
+        item_bg_img = create_color_resource_hex("2b364c", 1.0)
     }
 }
 
@@ -36,16 +36,16 @@ local main_style = {
     heading = {
         style = "box",
         font = font_hdg,
-        text_color = "d6edff",
+        text_color = "f0f4f5",
         font_size = 64,
         padding = 50,
-        bg_color = COLOR_OTAKON_PRIMARY,
-        shadow_color = "00294b",
+        bg_color = "2b364c",
+        shadow_color = "f0f4f5",
     },
     text = {
         font = font_body,
         font_bold = font_body_bold,
-        color = "ffffff",
+        color = "2b364c",
     },
     player_bg_mask = nil,
     margin = {70, 50, 70, 50},
@@ -65,8 +65,8 @@ local inset_style = {
         style = "underline",
         font = font_hdg,
         font_size = 64,
-        text_color = COLOR_OTAKON_AFFAIR,
-        shadow_color = COLOR_OTAKON_AFFAIR,
+        text_color = "da6339",
+        shadow_color = "da6339",
         padding = 50,
     },
     text = {
