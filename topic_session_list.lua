@@ -127,9 +127,8 @@ function SessionListTopic:draw()
         end)
     end
 
-    local pager_y = self.h - self.style.padding[3] - self.pager.h
-
     if self.pager then
+        local pager_y = self.h - self.style.padding[3] - self.pager.h
         offset(self.style.padding[4], pager_y, function()
             self.pager:draw()
         end)

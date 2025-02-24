@@ -25,10 +25,10 @@
         {"ticker_text_msg":"Second ticker message"},
         {"ticker_text_msg":"Last ticker message"}
     ],
-    "debug_datetime": "2024-08-02T18:30:00",
+    "debug_datetime": "2025-03-22T18:30:00",
     "debug_time_accel": 1.0,
     "guidebook_api_key": "",
-    "guidebook_guide_id": "191558",
+    "guidebook_guide_id": "208676",
     "ticker_speed": 2.0,
     "all_day_threshold": 0.5,
     "is_soon_threshold": 1.0,
