@@ -33,7 +33,12 @@ function SessionBriefTopic:initialize(player, w, h, style, duration, heading, te
     local exclude_closed = text:match("exclude%-closed:[ ]*(true)")
     sessions_filter(self.sessions_data, filter_location, filter_track, filter_id, exclude_id, exclude_closed)
 
-    self.sessions_per_page = 6  -- todo This should be based on height and session size
+    self.items_start_y = 210
+    self.item_h = 100
+    self.item_gap = 15
+
+    local items_space = self.h - self.items_start_y - self.style.padding[3]
+    self.sessions_per_page = math.floor(items_space / (self.item_h + self.item_gap))
     self.sessions_by_page = split_every_n(self.sessions_data, self.sessions_per_page)
     self.session_items = {}     -- the session drawing objects
 
@@ -62,7 +67,7 @@ function SessionBriefTopic:load_page()
             session.start_hhmm, session.start_ampm,
             session.finish_hhmm, session.finish_ampm,
             session.is_before_start, session.is_open, session.is_after_finish,
-            self.w, 100,
+            self.w, self.item_h,
             self.duration,
             (i - 1) * 0.1,
             self.style
@@ -93,12 +98,15 @@ function SessionBriefTopic:draw()
     local r, g, b = unpack(self.text_color)
     self:draw_background_media(self.alpha)
 
-    offset(self.w / 2, self.style.heading_y, function()
+    local heading_x = self.w / 2
+    local heading_y = self.style.padding[1]
+
+    offset(heading_x, heading_y, function()
         self.heading:draw()
     end)
 
     for i, session_item in ipairs(self.session_items) do
-        offset(0, self.style.message_y + (i - 1) * 115 + 60, function()
+        offset(0, self.items_start_y + (i - 1) * (self.item_h + self.item_gap), function()
             session_item:draw()
         end)
     end

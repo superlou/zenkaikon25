@@ -17,8 +17,8 @@ function InfoTopic:initialize(player, w, h, style, duration, heading, text, medi
     self:use_background_media(media, style.player_bg_mask)
 
     self.style = style
-    self.margin = self.style.margin
-    self.content_w = self.w - self.margin[2] - self.margin[4]
+    self.padding = self.style.padding
+    self.content_w = self.w - self.padding[2] - self.padding[4]
     self.lines = wrap_text(self.text, self.style.text.font, self.font_size, self.content_w)
     self.bg_alpha = 0
     self.text_alpha = 0
@@ -45,17 +45,32 @@ function InfoTopic:draw()
     local r, g, b = unpack(self.text_color)
     self:draw_background_media(self.bg_alpha)
 
-    offset(self.w / 2, self.style.heading_y, function()
+    local heading_x = self.w / 2
+    local heading_y = self.style.padding[1]
+
+    offset(heading_x, heading_y, function()
         self.heading:draw()
     end)
 
-    for i, line in ipairs(self.lines) do
-        self.style.text.font:write(
-            self.margin[4], i * self.font_size * 1.5 - self.y_offset + self.style.message_y,
-            line, self.font_size,
-            r, g, b, self.text_alpha
-        )
-    end
+    local message_y = self.style.padding[1] + 80
+    local message_y_limit = self.h - self.style.padding[3]
+
+    offset(0, message_y - self.y_offset, function()
+        for i, line in ipairs(self.lines) do
+            local line_x = self.padding[4]
+            local line_y = i * self.font_size * 1.5
+            local line_y_bottom = line_y + self.font_size
+
+            if (line_y_bottom + message_y) > message_y_limit then
+                break
+            end
+
+            self.style.text.font:write(
+                line_x, line_y, line, self.font_size,
+                r, g, b, self.text_alpha
+            )
+        end
+    end)
 end
 
 return InfoTopic

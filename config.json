@@ -50,6 +50,13 @@
         "disabled": false
     }],
     "sidebar_topic_player": [{
+        "device":"",
+        "duration": 5,
+        "heading":"Simple Text Info",
+        "media": {"filename":"img_no_media.png"},
+        "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "disabled": true
+    }, {
         "device": "",
         "duration": 5,
         "heading": "Happening Now",
@@ -62,7 +69,7 @@
             "type":"image"
         },
         "message": "!session-list\ndata:data_sessions_now.json",
-        "disabled": true
+        "disabled": false
     }, {
         "device":"",
         "duration": 5,
@@ -90,7 +97,7 @@
             "type":"image"
         },
         "message":"!session-brief\ndata:data_sessions_all_day.json\nexclude-closed:true",
-        "disabled": false
+        "disabled": true
     }, {
         "device":"",
         "duration":5,
@@ -102,7 +109,7 @@
             "metadata":{"format":"png", "height":964, "width":694}
         },
         "message":"",
-        "disabled": false
+        "disabled": true
     }, {
         "device":"",
         "duration":5,
@@ -114,7 +121,7 @@
             "metadata":{"format":"png", "height":964, "width":694}
         },
         "message":"",
-        "disabled": false
+        "disabled": true
     }],
     "main_topic_player": [{
         "device": "",
@@ -129,7 +136,7 @@
             "type":"image"
         },
         "message": "!session-list\ndata:data_sessions_now.json\n",
-        "disabled": false
+        "disabled": true
     }, {
         "device": "",
         "duration": 5,

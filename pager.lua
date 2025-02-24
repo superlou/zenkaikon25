@@ -11,6 +11,7 @@ local Pager = class("Pager")
 
 function Pager:initialize(w, pages)
     self.w = w
+    self.h = 24
     self.current = 1
     self.pages = pages
     self.img_w, self.img_h = 24, 24

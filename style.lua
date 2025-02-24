@@ -18,11 +18,9 @@ local sidebar_style = {
     text = {
         font = font_body,
         font_bold = font_body_bold,
-        color = "ffffff",
+        color = "000000",
     },
-    margin = {70, 50, 70, 50},
-    heading_y = 80,
-    message_y = 155,
+    padding = {70, 50, 250, 50},
     session_list = {
         item_bg_img = create_color_resource_hex("2b364c", 1.0),
         compact = true
@@ -48,9 +46,7 @@ local main_style = {
         color = "2b364c",
     },
     player_bg_mask = nil,
-    margin = {70, 50, 70, 50},
-    heading_y = 80,
-    message_y = 160,
+    padding = {70, 50, 20, 50},
     session_list = {
         item_bg_img = resource.load_image("img_event_row_bg.png"),
         compact = false
@@ -74,9 +70,7 @@ local inset_style = {
         font_bold = font_body_bold,
         color = "ffffff",
     },
-    margin = {70, 50, 70, 50},
-    heading_y = 80,
-    message_y = 160,
+    padding = {70, 50, 70, 50},
     session_list = {
         item_bg_img = resource.create_colored_texture(0, 0, 0, 1.0),
         compact = true
