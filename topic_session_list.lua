@@ -67,7 +67,8 @@ function SessionListTopic:initialize(player, w, h, style, duration, heading, tex
     -- Really only want pager if there is more than 1 page.
     if #self.sessions_by_page > 0 then
         -- todo I don't know why the following needs "+ 1"
-        self.pager = Pager(w, #self.sessions_by_page + 1)
+        local pager_w = self.w - self.style.padding[2] - self.style.padding[4]
+        self.pager = Pager(pager_w, #self.sessions_by_page + 1)
     end
 end
 
@@ -129,7 +130,7 @@ function SessionListTopic:draw()
     local pager_y = self.h - self.style.padding[3] - self.pager.h
 
     if self.pager then
-        offset(0, pager_y, function()
+        offset(self.style.padding[4], pager_y, function()
             self.pager:draw()
         end)
     end
