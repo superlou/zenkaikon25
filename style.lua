@@ -18,7 +18,7 @@ local sidebar_style = {
     text = {
         font = font_body,
         font_bold = font_body_bold,
-        color = "000000",
+        color = "f0f4f5",
     },
     padding = {70, 50, 250, 50},
     session_list = {
