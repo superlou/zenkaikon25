@@ -29,9 +29,10 @@ function SessionBriefTopic:initialize(player, w, h, style, duration, heading, te
     local filter_location = text:match("filter%-location:([^\n]+)")
     local filter_track = text:match("filter%-track:([^\n]+)")
     local filter_id = text:match("filter%-id:([^\n]+)")
+    local exclude_track = text:match("exclude%-track:([^\n]+)")
     local exclude_id = text:match("exclude%-id:([^\n]+)")
     local exclude_closed = text:match("exclude%-closed:[ ]*(true)")
-    sessions_filter(self.sessions_data, filter_location, filter_track, filter_id, exclude_id, exclude_closed)
+    sessions_filter(self.sessions_data, filter_location, filter_track, filter_id, exclude_track, exclude_id, exclude_closed)
 
     self.items_start_y = 210
     self.item_h = 100

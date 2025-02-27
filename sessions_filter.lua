@@ -1,5 +1,6 @@
 -- Filter a table of sessions in place
-function sessions_filter(sessions, location_str, track_str, filter_id_str, exclude_id_str, exclude_closed)
+function sessions_filter(sessions, location_str, track_str, filter_id_str,
+                         exclude_track_str, exclude_id_str, exclude_closed)
     if location_str then
         filter_inplace(sessions, function(session)
             for location in string_split(location_str, ",") do
@@ -31,6 +32,18 @@ function sessions_filter(sessions, location_str, track_str, filter_id_str, exclu
             end
 
             return false
+        end)
+    end
+
+    if exclude_track_str then
+        filter_inplace(sessions, function(session)
+            for track in string_split(exclude_track_str, ",") do
+                if array_contains(session.tracks, string_strip(track)) then
+                    return false
+                end
+            end
+            print("here")
+            return true
         end)
     end
 
