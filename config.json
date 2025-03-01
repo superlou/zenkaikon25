@@ -68,7 +68,7 @@
             "tags":[],
             "type":"image"
         },
-        "message": "!session-list\ndata:data_sessions_now.json",
+        "message": "!session-list\ndata:data_sessions_now.json\nexclude-track:Type: Convention Service",
         "disabled": false
     }, {
         "device":"",

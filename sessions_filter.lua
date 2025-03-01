@@ -42,7 +42,7 @@ function sessions_filter(sessions, location_str, track_str, filter_id_str,
                     return false
                 end
             end
-            print("here")
+
             return true
         end)
     end
