@@ -15,6 +15,7 @@ local ServiceIndicator = require "service_indicator"
 
 local sidebar_bg = resource.load_image "img_sidebar_bg.png"
 local main_bg = resource.load_image "img_main_bg2.png"
+local inset_bg = resource.load_image "img_inset_bg.png"
 local ticker_left_crop = resource.load_image "img_ticker_left_crop_qr.png"
 local ticker_right_crop = resource.load_image "img_ticker_right_crop.png"
 local ticker_right_triangle = resource.load_image "img_ticker_right_triangle.png"
@@ -68,7 +69,11 @@ function node.render()
         topic_main:draw()
     end)
 
-    offset(20, 750, function()
+    offset(10, 735, function() 
+        inset_bg:draw(0, 0, 620, 224)
+    end)
+
+    offset(20, 745, function()
         topic_inset:draw()
     end)
 
