@@ -2,6 +2,7 @@ local class = require "middleclass"
 local Topic = require "topic"
 local tw = require "tween"
 local json = require "json"
+local Pager = require "pager"
 require "text_util"
 require "color_util"
 require "file_util"
@@ -56,6 +57,14 @@ function SessionBriefTopic:initialize(player, w, h, style, duration, heading, te
     else
         self:load_page()
     end
+
+    -- todo I don't know why the length of the table is one less than expected
+    -- Really only want pager if there is more than 1 page.
+    if #self.sessions_by_page > 0 then
+        -- todo I don't know why the following needs "+ 1"
+        local pager_w = self.w - self.style.padding[2] - self.style.padding[4]
+        self.pager = Pager(pager_w, #self.sessions_by_page + 1)
+    end
 end
 
 function SessionBriefTopic:load_page()
@@ -81,6 +90,9 @@ function SessionBriefTopic:load_page()
         -- Need to exit the current page's sessions and load next ones
         tw:timer(self.duration + 0.5):on_done(function()
             self:load_page()
+            if self.pager then
+                self.pager:advance()
+            end
         end)
     else
         -- No more session pages to show
@@ -109,6 +121,13 @@ function SessionBriefTopic:draw()
     for i, session_item in ipairs(self.session_items) do
         offset(0, self.items_start_y + (i - 1) * (self.item_h + self.item_gap), function()
             session_item:draw()
+        end)
+    end
+
+    if self.pager then
+        local pager_y = self.h - self.style.padding[3] - self.pager.h
+        offset(self.style.padding[4], pager_y, function()
+            self.pager:draw()
         end)
     end
 end

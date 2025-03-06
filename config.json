@@ -30,7 +30,7 @@
     "guidebook_api_key": "",
     "guidebook_guide_id": "208676",
     "ticker_speed": 2.0,
-    "all_day_threshold": 0.5,
+    "all_day_threshold": 3.9,
     "is_soon_threshold": 1.0,
     "session_rename": "30409665,Street Fighter\n30409525,VIP Meet and Greet with Flow\n",
     "location_rename": "4783251,Club Ota (Marriott M4)",
@@ -50,6 +50,20 @@
         "disabled": false
     }],
     "sidebar_topic_player": [{
+        "device": "",
+        "duration": 5,
+        "heading": "All Day",
+        "media": {
+            "asset_id": 1245,
+            "asset_name":"test-asset-230fa9420ff9c02da9320-street.png",
+            "filename":"street.png",
+            "metadata":{"format": "png", "height": 964, "width": 1280},
+            "tags":[],
+            "type":"image"
+        },
+        "message": "!session-brief\ndata:data_sessions_all_day.json\nexclude-track:Type: Autographs",
+        "disabled": false
+    }, {
         "device":"",
         "duration": 5,
         "heading":"Simple Text Info",
