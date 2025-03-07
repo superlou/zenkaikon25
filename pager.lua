@@ -26,8 +26,6 @@ function Pager:initialize(w, pages)
 end
 
 function Pager:draw()
-    
-    
     for i=1,self.pages do
         local x = (i - 1) * self.img_w + (i - 1) * self.spacing
 
