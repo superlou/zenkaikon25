@@ -47,6 +47,10 @@ local main_style = {
     },
     player_bg_mask = nil,
     padding = {70, 50, 20, 50},
+    info = {
+        text_color = "2b364c",
+        text_frame = create_color_resource_hex("ffffff", 0.6),
+    },
     session_list = {
         item_bg_img = resource.load_image("img_event_row_bg.png"),
         compact = false

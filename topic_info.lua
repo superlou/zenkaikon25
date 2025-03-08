@@ -11,7 +11,10 @@ local InfoTopic = class("InfoTopic", Topic)
 function InfoTopic:initialize(player, w, h, style, duration, heading, text, media)
     Topic.initialize(self, player, w, h, style, duration)
     self.text = text
-    self.text_color = {hex2rgb(self.style.text.color)}
+    self.text_color = {hex2rgb(
+        (style.info and style.info.text_color) or style.text.color
+    )}
+    self.text_frame = style.info and style.info.text_frame
     self.font_size = 40
 
     self:use_background_media(media, style.player_bg_mask)
@@ -56,6 +59,16 @@ function InfoTopic:draw()
     local message_y_limit = self.h - self.style.padding[3]
 
     offset(0, message_y - self.y_offset, function()
+        if self.text_frame then
+            self.text_frame:draw(
+                self.padding[4] - 10,
+                self.font_size * 1.5 - 10,
+                self.w - self.padding[2] + 10,
+                self.font_size * 1.5 * (#self.lines + 1 ),
+                self.text_alpha
+            )
+        end
+
         for i, line in ipairs(self.lines) do
             local line_x = self.padding[4]
             local line_y = i * self.font_size * 1.5
