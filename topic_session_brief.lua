@@ -3,6 +3,7 @@ local Topic = require "topic"
 local tw = require "tween"
 local json = require "json"
 local Pager = require "pager"
+require "sessions_filter"
 require "text_util"
 require "color_util"
 require "file_util"
@@ -27,17 +28,19 @@ function SessionBriefTopic:initialize(player, w, h, style, duration, heading, te
     local session_data_text = file_load_safe(data_filename, "[]")
     self.sessions_data = json.decode(session_data_text)
 
-    local filter_location = text:match("filter%-location:([^\n]+)")
-    local filter_track = text:match("filter%-track:([^\n]+)")
-    local filter_id = text:match("filter%-id:([^\n]+)")
-    local exclude_track = text:match("exclude%-track:([^\n]+)")
-    local exclude_id = text:match("exclude%-id:([^\n]+)")
-    local exclude_closed = text:match("exclude%-closed:[ ]*(true)")
-    local include_id = text:match("include%-id:([^\n]+)")
-    sessions_filter(self.sessions_data,
-                    filter_location, filter_track, filter_id,
-                    exclude_track, exclude_id, exclude_closed,
-                    include_id)
+    -- local filter_location = text:match("filter%-location:([^\n]+)")
+    -- local filter_track = text:match("filter%-track:([^\n]+)")
+    -- local filter_id = text:match("filter%-id:([^\n]+)")
+    -- local exclude_track = text:match("exclude%-track:([^\n]+)")
+    -- local exclude_id = text:match("exclude%-id:([^\n]+)")
+    -- local exclude_closed = text:match("exclude%-closed:[ ]*(true)")
+    -- local include_id = text:match("include%-id:([^\n]+)")
+    local filters = extract_session_filters_from_config(text)
+    -- sessions_filter(self.sessions_data,
+    --                 filter_location, filter_track, filter_id,
+    --                 exclude_track, exclude_id, exclude_closed,
+    --                 include_id)
+    sessions_filter(self.sessions_data, filters)
 
     self.items_start_y = 210
     self.item_h = 100

@@ -33,6 +33,23 @@ function split_every_n(array, n)
     return result
 end
 
+-- https://stackoverflow.com/questions/11669926/is-there-a-lua-equivalent-of-scalas-map-or-cs-select-function
+function map_table(tbl, f)
+    local t = {}
+    for k,v in pairs(tbl) do
+        t[k] = f(v)
+    end
+    return t
+end
+
+function map_iter(iter, f)
+    local t = {}
+    for v in iter do
+        t[#t + 1] = f(v)
+    end
+    return t
+end
+
 function array_contains(array, value)
     for _, item_value in ipairs(array) do
         if item_value == value then return true end
