@@ -39,7 +39,11 @@ function SessionListTopic:initialize(player, w, h, style, duration, heading, tex
     local exclude_track = text:match("exclude%-track:([^\n]+)")
     local exclude_id = text:match("exclude%-id:([^\n]+)")
     local exclude_closed = text:match("exclude%-closed:[ ]*true")
-    sessions_filter(self.sessions_data, filter_location, filter_track, filter_id, exclude_track, exclude_id, exclude_closed)
+    local include_id = text:match("include%-id:([^\n]+)")
+    sessions_filter(self.sessions_data,
+                    filter_location, filter_track, filter_id,
+                    exclude_track, exclude_id, exclude_closed,
+                    include_id)
 
     self.items_start_y = 210
     self.item_h = 100

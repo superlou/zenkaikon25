@@ -1,12 +1,25 @@
+function id_is_in_ids_str(id, ids_str)
+    for check_id in string_split(ids_str, ",") do
+        if id == tonumber(check_id) then return true end
+    end
+
+    return false
+end
+
 -- Filter a table of sessions in place
 function sessions_filter(sessions, location_str, track_str, filter_id_str,
-                         exclude_track_str, exclude_id_str, exclude_closed)
+                         exclude_track_str, exclude_id_str, exclude_closed,
+                         include_id)
     if location_str then
         filter_inplace(sessions, function(session)
             for location in string_split(location_str, ",") do
                 if array_contains(session.locations, string_strip(location)) then
                     return true
                 end 
+            end
+
+            if include_id and id_is_in_ids_str(session.id, include_id) then
+                return true
             end
 
             return false
@@ -21,6 +34,10 @@ function sessions_filter(sessions, location_str, track_str, filter_id_str,
                 end
             end
 
+            if include_id and id_is_in_ids_str(session.id, include_id) then
+                return true
+            end
+
             return false
         end)
     end
@@ -31,12 +48,20 @@ function sessions_filter(sessions, location_str, track_str, filter_id_str,
                 if session.id == tonumber(id) then return true end
             end
 
+            if include_id and id_is_in_ids_str(session.id, include_id) then
+                return true
+            end
+
             return false
         end)
     end
 
     if exclude_track_str then
         filter_inplace(sessions, function(session)
+            if include_id and id_is_in_ids_str(session.id, include_id) then
+                return true
+            end
+
             for track in string_split(exclude_track_str, ",") do
                 if array_contains(session.tracks, string_strip(track)) then
                     return false
@@ -49,6 +74,10 @@ function sessions_filter(sessions, location_str, track_str, filter_id_str,
 
     if exclude_id_str then
         filter_inplace(sessions, function(session)
+            if include_id and id_is_in_ids_str(session.id, include_id) then
+                return true
+            end
+        
             for id in string_split(exclude_id_str, ",") do
                 if session.id == tonumber(id) then return false end
             end

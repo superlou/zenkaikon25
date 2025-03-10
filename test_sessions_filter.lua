@@ -115,6 +115,56 @@ function test_sessions_filter_track()
     assert_equal(#result, 5)
 end
 
+function test_sessions_include_id()
+    local sessions = {
+        {id=1, locations={"room a"}, tracks={"video"}},
+        {id=2, locations={"room b"}, tracks={"live"}},
+        {id=3, locations={"room b"}, tracks={"live"}},
+        {id=4, locations={"room c"}, tracks={"live"}},
+        {id=5, locations={"room d", "room e"}, tracks={"live", "video"}},
+    }
+
+    local result = sessions_filter(
+        shallow_copy(sessions),
+        nil, "video", nil,
+        nil, nil, nil,
+        "3, 4"
+    )
+    assert_equal(#result, 4)
+
+    local result = sessions_filter(
+        shallow_copy(sessions),
+        "room a", nil, nil,
+        nil, nil, nil,
+        "3, 4"
+    )
+    assert_equal(#result, 3)
+
+    local result = sessions_filter(
+        shallow_copy(sessions),
+        nil, nil, "2, 3",
+        nil, nil, nil,
+        "5"
+    )
+    assert_equal(#result, 3)
+
+    local result = sessions_filter(
+        shallow_copy(sessions),
+        nil, nil, nil,
+        "video", nil, nil,
+        "5"
+    )
+    assert_equal(#result, 4)
+
+    local result = sessions_filter(
+        shallow_copy(sessions),
+        nil, nil, nil,
+        nil, "1,2,3", nil,
+        "3"
+    )
+    assert_equal(#result, 3)
+end
+
 function test_sessions_filter_multiple()
     local sessions = {
         {locations={"room a"}, tracks={"video"}},
