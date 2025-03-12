@@ -69,34 +69,7 @@ local test_sessions = {
     },
 }
 
--- function test_sessions_filter_location()
---     local sessions = {
---         {locations={"room a"}, tracks={"video"}},
---         {locations={"room b"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room d", "room e"}, tracks={"live"}},
---     }
-
---     local result = sessions_filter(shallow_copy(sessions), "room a", nil)
---     assert_equal(#result, 1)
---     local result = sessions_filter(shallow_copy(sessions), "room b", nil)
---     assert_equal(#result, 1)
---     local result = sessions_filter(shallow_copy(sessions), "room c", nil)
---     assert_equal(#result, 2)
---     local result = sessions_filter(shallow_copy(sessions), "room b, room c", nil)
---     assert_equal(#result, 3)
---     local result = sessions_filter(shallow_copy(sessions), "room b, room c, room x", nil)
---     assert_equal(#result, 3)
---     local result = sessions_filter(shallow_copy(sessions), "room a,room b,room c,room x", nil)
---     assert_equal(#result, 4)
-
---     local result1 = sessions_filter(shallow_copy(sessions), "room d", nil)
---     local result2 = sessions_filter(shallow_copy(sessions), "room e", nil)
---     assert_equal_table(result1, result2)
--- end
-
-function test_sessions_filter_locations2()
+function test_sessions_filter_locations()
     local sessions = {
         {locations={"room a"}, tracks={"video"}},
         {locations={"room b"}, tracks={"live"}},
@@ -123,26 +96,7 @@ function test_sessions_filter_locations2()
     assert_equal_table(result1, result2)
 end
 
--- function test_sessions_filter_track()
---     local sessions = {
---         {locations={"room a"}, tracks={"video"}},
---         {locations={"room b"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room d", "room e"}, tracks={"live", "video"}},
---     }
-
---     local result = sessions_filter(shallow_copy(sessions), nil, "video")
---     assert_equal(#result, 2)
---     local result = sessions_filter(shallow_copy(sessions), nil, "live")
---     assert_equal(#result, 4)
---     local result = sessions_filter(shallow_copy(sessions), nil, "live, video")
---     assert_equal(#result, 5)
---     local result = sessions_filter(shallow_copy(sessions), nil, "video, live")
---     assert_equal(#result, 5)
--- end
-
-function test_sessions_filter_tracks2()
+function test_sessions_filter_tracks()
     local sessions = {
         {locations={"room a"}, tracks={"video"}},
         {locations={"room b"}, tracks={"live"}},
@@ -161,8 +115,7 @@ function test_sessions_filter_tracks2()
     assert_equal(#result, 5)
 end
 
-
-function test_sessions_exclude_tracks2()
+function test_sessions_exclude_tracks()
     local sessions = {
         {locations={"room a"}, tracks={"video"}},
         {locations={"room b"}, tracks={"live"}},
@@ -181,7 +134,7 @@ function test_sessions_exclude_tracks2()
     assert_equal(#result, 5)
 end
 
-function test_sessions_filter_ids2()
+function test_sessions_filter_ids()
     local sessions = {
         {id=1, locations={"room a"}, tracks={"video"}},
         {id=2, locations={"room b"}, tracks={"live"}},
@@ -198,7 +151,7 @@ function test_sessions_filter_ids2()
     assert_equal(#result, 5)
 end
 
-function test_sessions_exclude_ids2()
+function test_sessions_exclude_ids()
     local sessions = {
         {id=1, locations={"room a"}, tracks={"video"}},
         {id=2, locations={"room b"}, tracks={"live"}},
@@ -232,57 +185,7 @@ function test_sessions_exclude_closed()
     assert_equal(#result, 2)
 end
 
--- function test_sessions_include_id()
---     local sessions = {
---         {id=1, locations={"room a"}, tracks={"video"}},
---         {id=2, locations={"room b"}, tracks={"live"}},
---         {id=3, locations={"room b"}, tracks={"live"}},
---         {id=4, locations={"room c"}, tracks={"live"}},
---         {id=5, locations={"room d", "room e"}, tracks={"live", "video"}},
---     }
-
---     local result = sessions_filter(
---         shallow_copy(sessions),
---         nil, "video", nil,
---         nil, nil, nil,
---         "3, 4"
---     )
---     assert_equal(#result, 4)
-
---     local result = sessions_filter(
---         shallow_copy(sessions),
---         "room a", nil, nil,
---         nil, nil, nil,
---         "3, 4"
---     )
---     assert_equal(#result, 3)
-
---     local result = sessions_filter(
---         shallow_copy(sessions),
---         nil, nil, "2, 3",
---         nil, nil, nil,
---         "5"
---     )
---     assert_equal(#result, 3)
-
---     local result = sessions_filter(
---         shallow_copy(sessions),
---         nil, nil, nil,
---         "video", nil, nil,
---         "5"
---     )
---     assert_equal(#result, 4)
-
---     local result = sessions_filter(
---         shallow_copy(sessions),
---         nil, nil, nil,
---         nil, "1,2,3", nil,
---         "3"
---     )
---     assert_equal(#result, 3)
--- end
-
-function test_sessions_include_id2()
+function test_sessions_include_id()
     local sessions = {
         {id=1, locations={"room a"}, tracks={"video"}},
         {id=2, locations={"room b"}, tracks={"live"}},
@@ -322,26 +225,7 @@ function test_sessions_include_id2()
     assert_equal(#result, 3)
 end
 
--- function test_sessions_filter_multiple()
---     local sessions = {
---         {locations={"room a"}, tracks={"video"}},
---         {locations={"room b"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room c"}, tracks={"live"}},
---         {locations={"room d", "room e"}, tracks={"live", "video"}},
---     }
-
---     local result = sessions_filter(shallow_copy(sessions), "room a,room b", "video")
---     assert_equal(#result, 1)
---     local result = sessions_filter(shallow_copy(sessions), "room d", "live")
---     assert_equal(#result, 1)
---     local result = sessions_filter(shallow_copy(sessions), "room a, room b, room c, room d", "live")
---     assert_equal(#result, 4)
---     local result = sessions_filter(shallow_copy(sessions), "room a, room b, room c, room d", "live, video")
---     assert_equal(#result, 5)
--- end
-
-function test_sessions_filter_multiple2()
+function test_sessions_filter_multiple()
     local sessions = {
         {locations={"room a"}, tracks={"video"}},
         {locations={"room b"}, tracks={"live"}},
@@ -375,13 +259,7 @@ function test_sessions_filter_multiple2()
     assert_equal(#result, 5)
 end
 
--- function test_sessions_filter_real_data()
---     local sessions = shallow_copy(test_sessions)
---     local result = sessions_filter(sessions, " Panel 7 (WEWCC 152)", nil)
---     assert_equal(#result, 1)
--- end
-
-function test_sessions_filter_real_data2()
+function test_sessions_filter_real_data()
     local sessions = shallow_copy(test_sessions)
     local result = sessions_filter(sessions, {filter_locations={"Panel 7 (WEWCC 152)"}})
     assert_equal(#result, 1)
