@@ -15,7 +15,7 @@ local ServiceIndicator = require "service_indicator"
 local OctaviaPeek = require "octavia_peek"
 
 local sidebar_bg = resource.load_image "img_sidebar_bg.png"
-local main_bg = resource.load_image "img_main_bg2.png"
+local main_bg = resource.load_image "img_main_bg3.png"
 local inset_bg = resource.load_image "img_inset_bg.png"
 local get_guidebook = resource.load_image "img_get_guidebook.png"
 local ticker_left_crop = resource.load_image "img_ticker_left_crop.png"
