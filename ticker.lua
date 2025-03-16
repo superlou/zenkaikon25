@@ -6,7 +6,7 @@ local TickerMsg = class("TickerMsg")
 
 local font = resource.load_font "font_Poppins-Regular.ttf"
 local separator = resource.load_image("img_separator.png")
-local msg_y_offset = 28
+local msg_y_offset = 32
 
 function Ticker:initialize()
 end
@@ -14,7 +14,7 @@ end
 function Ticker:initialize(x, y, w, h)
     self.x, self.y = x, y
     self.w, self.h = w, h
-    self.bg = create_color_resource_hex("15141a")
+    self.bg = create_color_resource_hex("2b364c")
     self.speed = 1
     self.msgs = {}
     self.ticker_msgs = {}
@@ -41,7 +41,7 @@ function Ticker:draw()
     if #self.ticker_msgs == 0 then
         self.ticker_msgs[1] = TickerMsg(
             self.msgs[self.next_msg_id],
-            self.x, self.y + msg_y_offset, self.font, 60
+            self.x, self.y + msg_y_offset, self.font, 48
         )
         self.next_msg_id = self.next_msg_id + 1
     end
@@ -55,7 +55,7 @@ function Ticker:draw()
     while self:last_msg_end_x() < self.viewing_area_end do
         self.ticker_msgs[#self.ticker_msgs + 1] = TickerMsg(
             self.msgs[self.next_msg_id],
-            self:last_msg_end_x(), self.y + msg_y_offset, self.font, 60
+            self:last_msg_end_x(), self.y + msg_y_offset, self.font, 48
         )
     
         self.next_msg_id = self.next_msg_id + 1
@@ -94,7 +94,7 @@ function TickerMsg:draw()
     local text_width = self.font:write(self.x, self.y, self.text, self.size, 1, 1, 1, 1)
     local width, height = 64, 64
     local x_offset = 20
-    local y_offset = -4
+    local y_offset = -8
     separator:draw(
         self.x + text_width + x_offset, self.y + y_offset,
         self.x + text_width + width + x_offset, self.y + height + y_offset,

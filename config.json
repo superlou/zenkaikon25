@@ -150,7 +150,7 @@
             "type":"image"
         },
         "message": "!session-list\ndata:data_sessions_now.json\nexclude-track:Type: Convention Service\ninclude-id:12345",
-        "disabled": true
+        "disabled": false
     }, {
         "device": "",
         "duration": 5,
