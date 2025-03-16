@@ -150,7 +150,7 @@
             "type":"image"
         },
         "message": "!session-list\ndata:data_sessions_now.json\nexclude-track:Type: Convention Service\ninclude-id:12345",
-        "disabled": false
+        "disabled": true
     }, {
         "device": "",
         "duration": 5,
@@ -169,7 +169,7 @@
             "metadata":{"format":"png", "height":964, "width":1332}
         },
         "message":"",
-        "disabled": true
+        "disabled": false
     }, {
         "device":"",
         "duration": 5,

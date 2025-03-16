@@ -49,7 +49,7 @@ local main_style = {
     padding = {70, 50, 20, 50},
     info = {
         text_color = "2b364c",
-        text_frame = create_color_resource_hex("ffffff", 0.6),
+        text_frame = create_color_resource_hex("f0f4f5", 1.0),
     },
     session_list = {
         item_bg_img = create_color_resource_hex("f0f4f5", 1.0), --resource.load_image("img_event_row_bg.png"),

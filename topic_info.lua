@@ -59,7 +59,7 @@ function InfoTopic:draw()
     local message_y_limit = self.h - self.style.padding[3]
 
     offset(0, message_y - self.y_offset, function()
-        if self.text_frame then
+        if #self.lines > 0 and self.text_frame then
             self.text_frame:draw(
                 self.padding[4] - 10,
                 self.font_size * 1.5 - 10,
