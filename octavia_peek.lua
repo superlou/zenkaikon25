@@ -123,7 +123,17 @@ function OctaviaPeek:draw(dt)
 
         if self.hide_timer < 0 then
             self.state = State.APPEARING
-            self.x = math.random() * 1500 + 200
+
+            if math.random(100) < 20 then
+                -- Over the ad insert
+                self.x = math.random(10, 280)
+                self.y_target = 724
+            else
+                -- Over the ticker
+                self.x = math.random(462, 1770)
+                self.y_target = 960
+            end
+
             self.octavia_id = math.random(#octavias)
         end
     elseif self.state == State.APPEARING then

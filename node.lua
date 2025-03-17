@@ -74,6 +74,8 @@ function node.render()
         topic_main:draw()
     end)
 
+    draw_image_xywh(get_guidebook, 440, 730, 190, 209)
+
     if octavia_peek:is_behind() then
         octavia_peek:draw(dt)
     end
@@ -81,7 +83,6 @@ function node.render()
     ticker:draw()
     draw_image_xywh(ticker_left_crop, 0, 964, 470, 116)
     draw_image_xywh(ticker_right_crop, 1692, 964, 228, 116)
-    draw_image_xywh(get_guidebook, 440, 730, 190, 209)
 
     offset(10, 730, function() 
         inset_bg:draw(0, 0, 420, 324)
